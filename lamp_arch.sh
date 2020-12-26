@@ -11,7 +11,7 @@ boot_dialog() {
 }
 
 # Меню установки программ
-boot_dialog --notags --title "INSTALL LAMP" --checklist "Выберите нужное действие." 15 80 10 \
+boot_dialog --notags --title "INSTALL LAMP" --checklist "Выберите нужное действие." 10 60 4 \
     "lampinstall" "lamp_install.sh - установка LAMP" OFF \
     "lampdel" "lamp_del.sh - удаление LAMP" OFF \
     "serveradd" "server_add.sh - добавление нового WEB сервера" OFF \
