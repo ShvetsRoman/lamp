@@ -10,11 +10,10 @@ mysql_secure_installation
 
 echo "IncludeOptional conf/sites-enabled/*.conf" >> /etc/httpd/conf/httpd.conf
 echo "IncludeOptional conf/mods-enabled/*.conf" >> /etc/httpd/conf/httpd.conf
+echo "ServerName localhost" >> /etc/httpd/conf/httpd.conf
 mkdir /etc/httpd/conf/sites-available
 mkdir /etc/httpd/conf/sites-enabled
 mkdir /etc/httpd/conf/mods-enabled
-
-echo "ServerName localhost" >> /etc/httpd/conf/httpd.conf
 
 sed -i 's/^LoadModule mpm_event_module modules\/mod_mpm_event.so/#LoadModule mpm_event_module modules\/mod_mpm_event.so/g' /etc/httpd/conf/httpd.conf
 sed -i 's/^#LoadModule mpm_prefork_module modules\/mod_mpm_prefork.so/LoadModule mpm_prefork_module modules\/mod_mpm_prefork.so/g' /etc/httpd/conf/httpd.conf
@@ -83,9 +82,13 @@ fi
 EOF
 chmod +x /usr/local/bin/a2ensite /usr/local/bin/a2dissite
 
+
+
+echo "# Мои настройки севера!!!" > /etc/httpd/conf/extra/php.conf
 echo "LoadModule php7_module modules/libphp7.so" > /etc/httpd/conf/extra/php.conf
 echo "Include conf/extra/php7_module.conf" >> /etc/httpd/conf/extra/php.conf
-echo "AddHandler application/x-httpd-php .php" >> /etc/httpd/conf/extra/php.conf
+
+
 ln -s /etc/httpd/conf/extra/php.conf /etc/httpd/conf/mods-enabled/php.conf
 
 pacman --noconfirm -S phpmyadmin
