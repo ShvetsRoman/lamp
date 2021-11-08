@@ -53,7 +53,6 @@ mkdir -p "$dirname"/"$webname"/templates
 
 cat >> "$dirname"/"$webname"/.htaccess << 'EOF'
 AddDefaultCharset utf-8
-
 RewriteEngine on
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
@@ -78,8 +77,8 @@ EOF
 
 chown -R $USER:users $dirname
 chmod -R 777 $dirname
-
 a2ensite $webname
+
 systemctl restart httpd mysqld
 
 if [[ $DIALOG_CODE -eq 1 ]]; then

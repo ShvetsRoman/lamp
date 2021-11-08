@@ -1,6 +1,7 @@
 #!/bin/bash
 
-pacman --noconfirm -Rns phpmyadmin php-imap php-apache php apache
+pacman --noconfirm -Rns phpmyadmin php-apache apache
+#pacman --noconfirm -Rns phpmyadmin php-imap php-apache php apache
 #pacman --noconfirm -Rns mysql
 rm -r /etc/httpd/
 rm /usr/local/bin/a2ensite

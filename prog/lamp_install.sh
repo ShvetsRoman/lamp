@@ -84,9 +84,10 @@ chmod +x /usr/local/bin/a2ensite /usr/local/bin/a2dissite
 
 
 
-echo "# Мои настройки севера!!!" > /etc/httpd/conf/extra/php.conf
-echo "LoadModule php7_module modules/libphp7.so" > /etc/httpd/conf/extra/php.conf
-echo "Include conf/extra/php7_module.conf" >> /etc/httpd/conf/extra/php.conf
+echo "# Мои настройки PHP!!!" >> /etc/httpd/conf/extra/php.conf
+echo "LoadModule php_module modules/libphp.so" >> /etc/httpd/conf/extra/php.conf
+echo "AddHandler php-script .php" >> /etc/httpd/conf/extra/php.conf
+echo "Include conf/extra/php_module.conf" >> /etc/httpd/conf/extra/php.conf
 
 
 ln -s /etc/httpd/conf/extra/php.conf /etc/httpd/conf/mods-enabled/php.conf
