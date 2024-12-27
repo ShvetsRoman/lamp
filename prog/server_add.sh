@@ -18,7 +18,7 @@ dirname=$DIALOG_RESULT
 boot_dialog --title "Disk" --inputbox "\\nПожалуйста, Укажите название WEB сайта.\nНапример shop.loc\n\n" 10 60
 webname=$DIALOG_RESULT
 
-cat << localpc > /etc/httpd/conf/sites-available/$webname.conf
+cat << localpc > /etc/httpd/conf/sites-available/"$webname".conf
 <VirtualHost *:80>
     DocumentRoot "$dirname/$webname"
     ServerName $webname
@@ -37,9 +37,10 @@ cat << localpc > /etc/httpd/conf/sites-available/$webname.conf
 </VirtualHost>
 localpc
 
-echo "">> /etc/hosts
-echo "127.0.0.1 $webname">> /etc/hosts
-echo "127.0.0.1 www.$webname.loc">> /etc/hosts
+{ echo ""
+  echo "127.0.0.1 $webname"
+  echo "127.0.0.1 www.$webname.loc"
+} >> /etc/hosts
 
 mkdir -p "$dirname"
 mkdir -p "$dirname"/"$webname"
@@ -75,10 +76,10 @@ Server работает !!!
 </html>
 EOF
 
-sudo chown -R $USER:users $dirname
-sudo chmod -R 777 $dirname
+sudo chown -R "$USER":users "$dirname"
+sudo chmod -R 777 "$dirname"
 
-sudo a2ensite $webname
+sudo a2ensite "$webname"
 
 sudo systemctl restart httpd mysqld
 

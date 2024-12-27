@@ -18,13 +18,13 @@ dirname=$DIALOG_RESULT
 boot_dialog --title "Disk" --inputbox "\\nПожалуйста, Укажите название WEB сайта для удаления.\nНапример shop.local\n\n" 10 60
 webname=$DIALOG_RESULT
 
-rm /etc/httpd/conf/sites-available/$webname.conf
-rm /etc/httpd/conf/sites-enabled/$webname.conf
+rm /etc/httpd/conf/sites-available/"$webname".conf
+rm /etc/httpd/conf/sites-enabled/"$webname".conf
 
-sed -i 's/^127.0.0.1 '$webname'//g' /etc/hosts
-sed -i 's/^127.0.0.1 www.'$webname'//g' /etc/hosts
+sed -i 's/^127.0.0.1 '"$webname"'//g' /etc/hosts
+sed -i 's/^127.0.0.1 www.'"$webname"'//g' /etc/hosts
 
-rm -r "$dirname"/
+rm -rf "${dirname:?}"/
 
 if [[ $DIALOG_CODE -eq 1 ]]; then
 	boot_dialog --title "Cancelled" --msgbox "\nScript был отменен по вашему запросу." 10 60

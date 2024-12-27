@@ -8,9 +8,10 @@ systemctl start httpd mysqld
 
 mysql_secure_installation
 
-echo "IncludeOptional conf/sites-enabled/*.conf" >> /etc/httpd/conf/httpd.conf
-echo "IncludeOptional conf/mods-enabled/*.conf" >> /etc/httpd/conf/httpd.conf
-echo "ServerName localhost" >> /etc/httpd/conf/httpd.conf
+{ echo "IncludeOptional conf/sites-enabled/*.conf"
+  "IncludeOptional conf/mods-enabled/*.conf"
+  "ServerName localhost"
+} >> /etc/httpd/conf/httpd.conf
 mkdir /etc/httpd/conf/sites-available
 mkdir /etc/httpd/conf/sites-enabled
 mkdir /etc/httpd/conf/mods-enabled
@@ -84,11 +85,11 @@ fi
 EOF
 chmod +x /usr/local/bin/a2dissite
 
-echo "# Мои настройки !!!" >> /etc/httpd/conf/extra/php.conf
-echo "LoadModule php_module modules/libphp.so" >> /etc/httpd/conf/extra/php.conf
-echo "AddHandler php-script .php" >> /etc/httpd/conf/extra/php.conf
-echo "Include conf/extra/php_module.conf" >> /etc/httpd/conf/extra/php.conf
-
+{ echo "# Мои настройки !!!"
+  "LoadModule php_module modules/libphp.so"
+  "AddHandler php-script .php"
+  "Include conf/extra/php_module.conf"
+} >> /etc/httpd/conf/extra/php.conf
 
 ln -s /etc/httpd/conf/extra/php.conf /etc/httpd/conf/mods-enabled/php.conf
 

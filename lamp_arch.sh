@@ -29,25 +29,25 @@ sudo pacman -Syyuu
 for action in $progs; do
     case "$action" in
         '"lampinstall"')
-            curl -fLo ${HOME}/temp/lamp_install.sh --create-dirs https://raw.githubusercontent.com/ShvetsRoman/lamp/main/prog/lamp_install.sh
-            sudo sh ${HOME}/temp/lamp_install.sh
+            curl -fLo "${HOME}"/temp/lamp_install.sh --create-dirs https://raw.githubusercontent.com/ShvetsRoman/lamp/main/prog/lamp_install.sh
+            sudo sh "${HOME}"/temp/lamp_install.sh
             ;;
         '"lampdel"')
-            curl -fLo ${HOME}/temp/lamp_del.sh --create-dirs https://raw.githubusercontent.com/ShvetsRoman/lamp/main/prog/lamp_del.sh
-            sudo sh ${HOME}/temp/lamp_del.sh
+            curl -fLo "${HOME}"/temp/lamp_del.sh --create-dirs https://raw.githubusercontent.com/ShvetsRoman/lamp/main/prog/lamp_del.sh
+            sudo sh "${HOME}"/temp/lamp_del.sh
             ;;
         '"serveradd"')
-            curl -fLo ${HOME}/temp/server_add.sh --create-dirs https://raw.githubusercontent.com/ShvetsRoman/lamp/main/prog/server_add.sh
-            sudo sh ${HOME}/temp/server_add.sh
+            curl -fLo "${HOME}"/temp/server_add.sh --create-dirs https://raw.githubusercontent.com/ShvetsRoman/lamp/main/prog/server_add.sh
+            sudo sh "${HOME}"/temp/server_add.sh
             ;;
         '"serverdel"')
-            curl -fLo ${HOME}/temp/server_del.sh --create-dirs https://raw.githubusercontent.com/ShvetsRoman/lamp/main/prog/server_del.sh
-            sudo sh ${HOME}/temp/server_del.sh
+            curl -fLo "${HOME}"/temp/server_del.sh --create-dirs https://raw.githubusercontent.com/ShvetsRoman/lamp/main/prog/server_del.sh
+            sudo sh "${HOME}"/temp/server_del.sh
             ;;
     esac
 done
 
-# Если папка ${HOME}/temp есть, тогда удаляем.
-if [[ -e ${HOME}/temp ]]; then
-    rm -r ${HOME}/temp
+# Если папка "${HOME}"/temp есть, тогда удаляем.
+if [[ -e "${HOME}"/temp ]]; then
+    rm -r "${HOME}"/temp
 fi
